@@ -1,4 +1,4 @@
-//get the element with the specified ID
+//get html element by class ID
 const startBtn = document.getElementById("start");
 const pauseBtn= document.getElementById("pause");
 const resetBtn = document.getElementById("reset");
@@ -23,6 +23,7 @@ let setLongBreakMins = document.getElementById("long-break-input");
 
 const interval = document.getElementById("interval-timer");
 
+// addEventListener() on save button 
 document.querySelector('form').addEventListener('submit', (e)=>{
     e.preventDefault();
     localStorage.setItem("interval-input", setIntervalMins.value);
@@ -33,19 +34,18 @@ document.querySelector('form').addEventListener('submit', (e)=>{
     longBreakMins.innerText = setLongBreakMins.value;
 });
 
-let roundTimer;
-let shortBreakTimer;
-let longBreakTimer;
+// initialize timers 
+let roundTimer, shortBreakTimer, longBreakTimer;
 
+// function to setInterval() for interval timer
 function startRoundTimer() {
     roundTimer = setInterval( beginRound, 1000);
 }
 
+// function to start interval timer  
 function beginRound(){
     document.title = intervalMins.innerText + ":" + intervalSecs.innerText;
-    // intervalSecs.innerText < 10 ? '0' + intervalSecs.innerText : intervalSecs.innerText;
-    // intervalMins.innerText < 10 ? '0' + intervalMins.innerText : intervalMins.innerText;
-
+   
     if (intervalSecs.innerText != 0){        
         intervalSecs.innerText--;
     }
@@ -68,6 +68,7 @@ function beginRound(){
     }
 }
 
+// function to clear interval timer  
 function stopRoundTimer() {
     // container.style.border = "5px solid rgb(69, 123, 157)";
     clearInterval(roundTimer);
@@ -75,10 +76,12 @@ function stopRoundTimer() {
     intervalSecs.innerText = '00';
 }
 
+// function to setInterval() for short break timer
 function startShortTimer() {
     shortBreakTimer = setInterval(beginShort,1000);
 }
 
+// function to start short break timer 
 function beginShort(){
     document.title = shortBreakMins.innerText + ":" + shortBreakSecs.innerText;
     if(shortBreakSecs.innerText != 00){
@@ -95,16 +98,19 @@ function beginShort(){
     }
 } 
 
+// function to clear short break timer 
 function stopShortTimer() {
     clearInterval(shortBreakTimer);
     shortBreakMins.innerText = setShortBreakMins.value; 
     shortBreakSecs.innerText = '00';
 }
 
+// function to setInterval() for long break timer
 function startLongTimer() {
     longBreakTimer = setInterval( beginLong, 1000)   
 }
 
+// function to start long break timer 
 function beginLong(){
     document.title = longBreakMins.innerText + ":" + longBreakSecs.innerText;
     if(longBreakSecs.innerText != 00){
@@ -121,6 +127,7 @@ function beginLong(){
     }
 }
 
+// function to clear long break timer 
 function stopLongTimer() {
     roundCounter.innerText = 00;
     clearInterval(longBreakTimer);
@@ -128,7 +135,7 @@ function stopLongTimer() {
     longBreakSecs.innerText = '00';
 }
 
-// event listener for start button 
+// addEventListener() on start button 
 startBtn.addEventListener('click', function(){
     if (!roundTimer){
         startRoundTimer();
@@ -138,7 +145,7 @@ startBtn.addEventListener('click', function(){
     }
 });   
 
-// event listener for pause button 
+// addEventListener() on pause button 
 pauseBtn.addEventListener('click', function(){
     
     if(!roundTimer){
@@ -151,7 +158,7 @@ pauseBtn.addEventListener('click', function(){
     }
 });
 
-// event listener for reset button 
+// addEventListener() on reset button 
 resetBtn.addEventListener('click', function(){
     if(!roundTimer){
         alert('Cannot reset as timer is not running. ≧◠‿◠≦ ');
