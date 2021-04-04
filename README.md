@@ -16,7 +16,7 @@ Build a “[Pomodoro](https://en.wikipedia.org/wiki/Pomodoro_Technique) timer”
 - [ ] Play an alarm sound to make it obvious the time is up
 
 ---
-:confetti_ball: :tada: This is my [Pomodoro Timer](https://fac21.github.io/safia-timer/) made using HTML, CSS, vanilla JavaScript. :tada: :confetti_ball:
+:confetti_ball: :tada: This is my [Pomodoro Timer](https://fi-ya.github.io/pomodero-timer/) made using HTML, CSS, vanilla JavaScript. :tada: :confetti_ball:
 
 
 ## Process
